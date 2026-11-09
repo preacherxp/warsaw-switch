@@ -606,13 +606,13 @@
     // Roof: a forest of old aerials, a lift house, and the city's name in steel letters
     w.rect(10, 28, 11, 6, M.BLOK_DK);
     w.rect(10, 27, 11, 1, M.BLOK_LT);
-    w.rect(68, 28, 9, 6, M.BLOK_DK);
-    w.rect(68, 27, 9, 1, M.BLOK_LT);
+    w.rect(73, 28, 9, 6, M.BLOK_DK);
+    w.rect(73, 27, 9, 1, M.BLOK_LT);
     for (const [ax, top] of [
       [-6, 22],
       [4, 24],
+      [14, 16],
       [24, 12],
-      [62, 16],
       [80, 20],
       [86, 24],
       [96, 22],
@@ -621,9 +621,10 @@
       for (let j = 0; j < 4; j++) w.rect(ax - 2 + (j % 2), top + j * 2, 5 - (j % 2) * 2, 1, M.STEEL_DK);
     }
     const g = w.addGroup(18.1, 28.5);
-    w.rect(21, 33, 41, 1, M.STEEL_DK);
-    for (const fx of [24, 42, 58]) w.rect(fx, 24, 1, 9, M.STEEL_DK);
-    w.sign(w, 21, 24, 'WARSZAWA', { n: N.ICE, g, wall: false });
+    w.rect(29, 33, 41, 1, M.STEEL_DK);
+    // Posts hold the letters from below, so none runs through a glyph
+    for (const fx of [32, 50, 66]) w.rect(fx, 30, 1, 3, M.STEEL_DK);
+    w.sign(w, 29, 24, 'WARSZAWA', { n: N.ICE, g, wall: false });
   };
 
   // ---- Street level, left to right
@@ -875,8 +876,8 @@
     word(w, 242, 106, 'BARSZCZ', { n: N.NONE, g: 0, off: M.BOARD_R, font: 3 });
     w.rect(240, 105, 1, 11, M.MDM_DK);
     w.rect(271, 105, 3, 13, M.MDM_LT);
-    // Pharmacy, cold light and rows of little bottles; the green cross blinks as they all do
-    const gA = w.addGroup(12, 28, 'room');
+    // Pharmacy, open round the clock, cold light and rows of little bottles; the green cross blinks as they all do
+    const gA = w.addGroup(12, 40, 'room');
     shop(274, 22, N.SHOP_C, gA);
     for (let i = 0; i < 18; i += 2) {
       w.rect(276 + i, 108, 1, 2, [M.BOARD_W, M.BOARD_G, M.P_BLUE][i % 3]);
@@ -2223,7 +2224,7 @@
 
   CitySwitch.define('warsaw-switch', {
     city: 'Warsaw',
-    label: 'Dark mode',
+    label: 'Warsaw day and night',
     tube: ['#ff2a2a', '#dff2ff'],
     body: ['#e8e9e6', '#0c121a'],
     glass: 'frost',
